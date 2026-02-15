@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baku</title> - Pedidos Online</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --naranja: #f38d2a;
+            --naranja-brillante: #ff9f43;
+            --oscuro: #121416;
+            --gris-card: #1e2125;
+            --blanco: #ffffff;
+            --texto-gris: #a0a0a0;
+            --rojo: #e74c3c;
+            --instagram: #E1306C;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--oscuro);
+            color: var(--blanco);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(to bottom, #1e2125, var(--oscuro));
+            position: relative;
+        }
+
+        /* Botón Flotante de Instagram en Header */
+        .ig-header {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: var(--blanco);
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(225, 48, 108, 0.2);
+            padding: 8px 15px;
+            border-radius: 50px;
+            border: 1px solid var(--instagram);
+        }
+
+        .ig-header:hover { background: var(--instagram); transform: scale(1.05); }
+
+        .logo {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 4px solid var(--naranja);
+            box-shadow: 0 0 20px rgba(243, 141, 42, 0.3);
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        h1 { margin: 0; letter-spacing: 2px; color: var(--naranja); text-transform: uppercase; }
+
+        nav {
+            background-color: var(--naranja);
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            font-weight: bold;
+        }
+
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 30px;
+            gap: 30px;
+            max-width: 1400px;
+            margin: auto;
+        }
+
+        .menu-grid {
+            flex: 3;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background-color: var(--gris-card);
+            border: 1px solid #333;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover { border-color: var(--naranja); transform: translateY(-10px); }
+        .card img { width: 100%; height: 200px; object-fit: cover; }
+        .card-info { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+        .price { color: var(--naranja-brillante); font-size: 1.5rem; font-weight: bold; margin-bottom: 15px; }
+
+        .btn-add {
+            background-color: var(--naranja);
+            border: none;
+            color: white;
+            padding: 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .sidebar {
+            flex: 1;
+            min-width: 320px;
+            background-color: var(--gris-card);
+            padding: 25px;
+            border-radius: 20px;
+            border: 2px solid var(--naranja);
+            height: fit-content;
+            position: sticky;
+            top: 80px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+            padding: 12px 0;
+        }
+
+        .btn-delete { background: none; border: none; color: var(--rojo); font-size: 1.2rem; cursor: pointer; }
+
+        .total-section { margin-top: 25px; font-size: 1.6rem; font-weight: bold; text-align: right; color: var(--naranja); }
+
+        input, textarea {
+            width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px;
+            border: 1px solid #444; background: #121416; color: white; box-sizing: border-box;
+        }
+
+        .btn-whatsapp {
+            background-color: #25d366; color: white; border: none; padding: 18px;
+            width: 100%; border-radius: 10px; font-size: 1.1rem; font-weight: bold; cursor: pointer;
+        }
+
+        /* Sección Footer Instagram */
+        .ig-footer {
+            text-align: center;
+            padding: 50px 20px;
+            background: #1e2125;
+            margin-top: 40px;
+        }
+
+        .btn-ig-large {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+
+        .btn-ig-large:hover { transform: scale(1.1); box-shadow: 0 0 20px rgba(225, 48, 108, 0.5); }
+
+        @media (max-width: 900px) {
+            .main-content { flex-direction: column; }
+            .ig-header { position: relative; top: 0; right: 0; margin-bottom: 20px; display: inline-flex; }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <a href="https://www.instagram.com/baku_burger_cba" target="_blank" class="ig-header">
+            <i class="fab fa-instagram"></i> @baku_burger_cba
+        </a>
+        <img src="logo.jpg" alt="Logo" class="logo">
+        <h1>Baku</h1>
+        <p style="color: var(--texto-gris)">¡Como a vos te gusta!</p>
+    </header>
+
+    <nav>
+        <span>MENÚ</span>
+        <span>PROMOS</span>
+        <span>CONTACTO</span>
+    </nav>
+
+    <div class="main-content">
+        <div class="menu-grid">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500" alt="Hamburguesa">
+                <div class="card-info">
+                    <h3>Doble Bacon Cheddar</h3>
+                    <p>Doble medallón, cheddar y bacon crocante.</p>
+                    <span class="price">$8.900</span>
+                    <button class="btn-add" onclick="agregarAlCarrito('Doble Bacon Cheddar', 8900)">Agregar +</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=500" alt="Hamburguesa">
+                <div class="card-info">
+                    <h3>Clásica Completa</h3>
+                    <p>Lechuga, tomate, cebolla morada y mayonesa.</p>
+                    <span class="price">$7.500</span>
+                    <button class="btn-add" onclick="agregarAlCarrito('Clásica Completa', 7500)">Agregar +</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1596662951482-0c4ba74a6df6?w=500" alt="Hamburguesa">
+                <div class="card-info">
+                    <h3>Triple Stacker</h3>
+                    <p>Tres medallones de carne y mucha salsa.</p>
+                    <span class="price">$11.500</span>
+                    <button class="btn-add" onclick="agregarAlCarrito('Triple Stacker', 11500)">Agregar +</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1573015613030-24791d0f5756?w=500" alt="Papas">
+                <div class="card-info">
+                    <h3>Papas con Cheddar</h3>
+                    <p>Papas fritas con cheddar fundido y bacon.</p>
+                    <span class="price">$4.500</span>
+                    <button class="btn-add" onclick="agregarAlCarrito('Papas Cheddar', 4500)">Agregar +</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <h2 style="margin-top:0">Tu Pedido 🛒</h2>
+            <div id="items-carrito">
+                <p style="color: var(--texto-gris)">El carrito está vacío.</p>
+            </div>
+            <div class="total-section">Total: <span id="total-monto">$0</span></div>
+            <div style="margin-top: 20px;">
+                <input type="text" id="nombre-cliente" placeholder="¿Quién recibe?">
+                <input type="text" id="direccion-cliente" placeholder="Dirección o Mesa">
+                <textarea id="notas-pedido" placeholder="Notas (Ej: Sin cebolla, papas sin sal...)"></textarea>
+            </div>
+            <button class="btn-whatsapp" onclick="enviarPedido()">PEDIR POR WHATSAPP</button>
+        </div>
+    </div>
+
+    <div class="ig-footer">
+        <h3>¿Querés ver más fotos? 📸</h3>
+        <p style="color: var(--texto-gris); margin-bottom: 25px;">Seguinos en Instagram para enterarte de las promos diarias.</p>
+        <a href="https://www.instagram.com/baku_burger_cba" target="_blank" class="btn-ig-large">
+            <i class="fab fa-instagram"></i> SEGUINOS EN INSTAGRAM
+        </a>
+    </div>
+
+    <script>
+        let carrito = [];
+        let total = 0;
+
+        function agregarAlCarrito(nombre, precio) {
+            const existe = carrito.find(item => item.nombre === nombre);
+            if (existe) { existe.cantidad++; } 
+            else { carrito.push({ nombre, precio, cantidad: 1 }); }
+            actualizarInterfaz();
+        }
+
+        function eliminarDelCarrito(nombre) {
+            carrito = carrito.filter(item => item.nombre !== nombre);
+            actualizarInterfaz();
+        }
+
+        function actualizarInterfaz() {
+            const contenedor = document.getElementById('items-carrito');
+            const totalTxt = document.getElementById('total-monto');
+            contenedor.innerHTML = '';
+            total = 0;
+            carrito.forEach((item) => {
+                total += item.precio * item.cantidad;
+                contenedor.innerHTML += `
+                    <div class="cart-item">
+                        <span><strong>${item.cantidad}x</strong> ${item.nombre}</span>
+                        <div>
+                            <span>$${(item.precio * item.cantidad).toLocaleString()}</span>
+                            <button class="btn-delete" onclick="eliminarDelCarrito('${item.nombre}')"> <i class="fas fa-trash"></i> </button>
+                        </div>
+                    </div>`;
+            });
+            if (carrito.length === 0) contenedor.innerHTML = '<p style="color: var(--texto-gris)">El carrito está vacío.</p>';
+            totalTxt.innerText = `$${total.toLocaleString()}`;
+        }
+
+        function enviarPedido() {
+            const nombre = document.getElementById('nombre-cliente').value;
+            const direccion = document.getElementById('direccion-cliente').value;
+            const notas = document.getElementById('notas-pedido').value;
+            const telefono = "5493512832957"; 
+
+            if (carrito.length === 0 || !nombre || !direccion) {
+                alert("Completá todos los datos para pedir.");
+                return;
+            }
+
+            let mensaje = `🍔 *NUEVO PEDIDO - Baku* \n\n👤 *Cliente:* ${nombre}\n📍 *Lugar:* ${direccion}\n`;
+            if (notas) mensaje += `📝 *Notas:* ${notas}\n`;
+            mensaje += `----------------------------\n`;
+            carrito.forEach(item => { mensaje += `• ${item.cantidad}x ${item.nombre} - $${(item.precio * item.cantidad).toLocaleString()}\n`; });
+            mensaje += `----------------------------\n💰 *TOTAL: $${total.toLocaleString()}*`;
+
+            window.open(`https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`, '_blank');
+        }
+    </script>
+</body>
+</html>
