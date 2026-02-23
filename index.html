@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Baku</title> 
+    <title>Buen Sabor</title> - Pedidos Online</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -180,16 +180,17 @@
             .ig-header { position: relative; top: 0; right: 0; margin-bottom: 20px; display: inline-flex; }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://www.instagram.com/buensabor.roti?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" rel="stylesheet">
 </head>
 <body>
 
     <header>
-        <a href="https://www.instagram.com/baku_burger_cba" target="_blank" class="ig-header">
-            <i class="fab fa-instagram"></i> @baku_burger_cba
+        <a href="https://www.instagram.com/buensabor.roti?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="ig-header">
+            <i class="fab fa-instagram"></i> @buensabor.roti
+
         </a>
         <img src="logo.jpg" alt="Logo" class="logo">
-        <h1>Baku</h1>
+        <h1>Buen Sabor</h1>
         <p style="color: var(--texto-gris)">¡Como a vos te gusta!</p>
     </header>
 
@@ -260,7 +261,7 @@
     <div class="ig-footer">
         <h3>¿Querés ver más fotos? 📸</h3>
         <p style="color: var(--texto-gris); margin-bottom: 25px;">Seguinos en Instagram para enterarte de las promos diarias.</p>
-        <a href="https://www.instagram.com/baku_burger_cba" target="_blank" class="btn-ig-large">
+        <a href="https://www.instagram.com/buensabor.roti?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="btn-ig-large">
             <i class="fab fa-instagram"></i> SEGUINOS EN INSTAGRAM
         </a>
     </div>
@@ -312,7 +313,7 @@
                 return;
             }
 
-            let mensaje = `🍔 *NUEVO PEDIDO - Baku* \n\n👤 *Cliente:* ${nombre}\n📍 *Lugar:* ${direccion}\n`;
+            let mensaje = `🍔 *NUEVO PEDIDO - Buen Sabor* \n\n👤 *Cliente:* ${nombre}\n📍 *Lugar:* ${direccion}\n`;
             if (notas) mensaje += `📝 *Notas:* ${notas}\n`;
             mensaje += `----------------------------\n`;
             carrito.forEach(item => { mensaje += `• ${item.cantidad}x ${item.nombre} - $${(item.precio * item.cantidad).toLocaleString()}\n`; });
@@ -322,5 +323,4 @@
         }
     </script>
 </body>
-
 </html>
